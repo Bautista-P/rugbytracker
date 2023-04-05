@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  {% block styles %}
+
+{% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>RugbyTracker</title>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'jugadores:tackles' %}">Seguimiento de tackles</a>
+  </nav>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>

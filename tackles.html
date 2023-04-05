@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Seguimiento de tackles</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Número</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Tackles</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for jugador in jugadores %}
+        <tr>
+          <td>{{ jugador.numero }}</td>
+          <td>{{ jugador.nombre }}</td>
+          <td>{{ jugador.apellido }}</td>
+          <td>{{ jugador.tackles }}</td>
+          <td>
+            <div class="actions-container">
+                <form method="POST" action="{% url 'jugadores:decrement_tackles' jugador.id %}">
+                  {% csrf_token %}
+                  <button type="submit">-</button>
+                </form>
+                <form method="POST" action="{% url 'jugadores:increment_tackles' jugador.id %}">
+                    {% csrf_token %}
+                    <button type="submit">+</button>
+                </form>
+                
+            </div>
+        </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+
+
